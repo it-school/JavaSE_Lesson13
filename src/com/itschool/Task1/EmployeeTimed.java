@@ -1,6 +1,6 @@
-package com.itschool;
+package com.itschool.Task1;
 
-import com.itschool.Exceptions.IDException;
+import com.itschool.Task1.Exceptions.IDException;
 
 public class EmployeeTimed extends Employee implements IEmployee {
     private double typicalSalary;
