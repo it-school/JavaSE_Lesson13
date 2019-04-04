@@ -6,6 +6,9 @@ import com.itschool.Task1.EmployeeTimed;
 import com.itschool.Task1.Exceptions.IDException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Main {
 
@@ -28,15 +31,31 @@ public class Main {
 
 
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(new EmployeeSalaried("Employee1 fulltime", 10000));
+        employees.add(new EmployeeSalaried("DEmployee1 fulltime", 12000));
         employees.add(new EmployeeTimed(1234567891, "Employee2 parttime", 70));
-        employees.add(new EmployeeSalaried("Employee3 fulltime", 20000));
+        employees.add(new EmployeeSalaried("ZEmployee3 fulltime", 20000));
         employees.add(new EmployeeTimed(1234567891, "Employee4 parttime", 90));
-        employees.add(new EmployeeSalaried("Employee5 fulltime", 30000));
+        employees.add(new EmployeeSalaried("Amployee5 fulltime", 5000));
         employees.add(new EmployeeTimed(1234567891, "Employee6 parttime", 110));
 
         System.out.println("\nEmployees: ");
         for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+
+        // Collections.sort(…)
+        List<Employee> list = employees;
+        Collections.sort(list, new Comparator<Employee>()
+        {
+            public int compare(Employee o1, Employee o2)
+            {
+                return o1.toString().compareTo(o2.toString());
+            }
+        });
+
+        System.out.println("\nSorted by name Employees: ");
+        for (Employee employee : list)
+        {
             System.out.println(employee);
         }
     }
