@@ -1,8 +1,8 @@
 package com.itschool;
 
 public interface IEmployee {
-    double minimalMonthSalary = 3710;   //  минимальная месячная зарплата в Украине на 1.05.2018
-    double minimalHourSalary = 22.5;      //  минимальная почасовая оплата в Украине на 1.05.2018
+    double minimalMonthSalary = 4123;   //  минимальная месячная зарплата в Украине на 1.01.2019
+    double minimalHourSalary = 24.78;   //  минимальная почасовая оплата в Украине на 1.01.2019
     double typicalsMonthDays = 20.8;    //
     double hoursPerDay = 8;             //
 
