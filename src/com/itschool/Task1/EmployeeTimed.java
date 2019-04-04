@@ -7,12 +7,12 @@ public class EmployeeTimed extends Employee implements IEmployee {
 
     public EmployeeTimed() {
         super();
-        typicalSalary = minimalHourSalary;
+        typicalSalary = MINIMAL_HOUR_SALARY;
     }
 
     public EmployeeTimed(long ID) throws IDException {
         super(ID);
-        typicalSalary = minimalHourSalary;
+        typicalSalary = MINIMAL_HOUR_SALARY;
     }
 
     public EmployeeTimed(long ID, double typicalSalary) throws IDException {
@@ -27,7 +27,7 @@ public class EmployeeTimed extends Employee implements IEmployee {
 
     @Override
     public double CalculateSalary() {
-        return typicalsMonthDays * hoursPerDay * typicalSalary;
+        return TYPICALS_MONTH_DAYS * HOURS_PER_DAY * typicalSalary;
     }
 
     public double getTypicalSalary() {
@@ -35,7 +35,7 @@ public class EmployeeTimed extends Employee implements IEmployee {
     }
 
     public void setTypicalSalary(double typicalSalary) {
-        this.typicalSalary = (typicalSalary < minimalHourSalary ? minimalHourSalary : typicalSalary);
+        this.typicalSalary = (typicalSalary < MINIMAL_HOUR_SALARY ? MINIMAL_HOUR_SALARY : typicalSalary);
     }
 
     @Override

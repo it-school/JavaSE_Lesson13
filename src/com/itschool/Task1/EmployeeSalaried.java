@@ -1,7 +1,7 @@
 package com.itschool.Task1;
 
 public class EmployeeSalaried extends Employee implements IEmployee {
-    private double typicalSalary = minimalMonthSalary;
+    private double typicalSalary = MINIMAL_MONTH_SALARY;
 
     public EmployeeSalaried(String name) {
         super(name);
@@ -26,7 +26,7 @@ public class EmployeeSalaried extends Employee implements IEmployee {
     }
 
     public void setTypicalSalary(double typicalSalary) {
-        this.typicalSalary = (typicalSalary < minimalMonthSalary ? minimalMonthSalary : typicalSalary);
+        this.typicalSalary = (typicalSalary < MINIMAL_MONTH_SALARY ? MINIMAL_MONTH_SALARY : typicalSalary);
     }
 
     @Override
