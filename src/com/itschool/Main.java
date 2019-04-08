@@ -47,9 +47,11 @@ public class Main {
         List<Employee> list = employees;
         Collections.sort(list, new Comparator<Employee>()
         {
+            @Override
             public int compare(Employee o1, Employee o2)
             {
-                return o1.toString().compareTo(o2.toString());
+                // return (o1.CalculateSalary() > o2.CalculateSalary() ? 1 : o1.CalculateSalary() < o2.CalculateSalary() ? -1 : 0 );
+                return (int) (o1.CalculateSalary() - o2.CalculateSalary());
             }
         });
 
