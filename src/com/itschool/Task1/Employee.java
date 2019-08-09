@@ -2,6 +2,8 @@ package com.itschool.Task1;
 
 import com.itschool.Task1.Exceptions.IDException;
 
+import java.util.Comparator;
+
 abstract public class Employee implements IEmployee {
     private long ID;
     private String name;
@@ -53,4 +55,21 @@ abstract public class Employee implements IEmployee {
     public String toString() {
         return "Employee: " + this.name + (this.ID > 0 ? ", " + this.ID : "");
     }
+
+    public static Comparator<Employee> BySalary = new Comparator<>() {
+        @Override
+        public int compare(Employee employee1, Employee employee2) {
+            return (int) (employee1.CalculateSalary() - employee2.CalculateSalary());
+        }
+    };
+
+    public static Comparator<Employee> ByName = new Comparator<>() {
+        @Override
+        public int compare(Employee employee1, Employee employee2) {
+            return (employee1.getName().compareTo(employee2.getName()));
+        }
+    };
+
+    public static Comparator<Employee> ByNameDescending = (employee1, employee2) -> (employee2.getName().compareTo(employee1.getName()));
+
 }

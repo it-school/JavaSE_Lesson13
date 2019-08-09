@@ -4,8 +4,6 @@ public class IDException extends Exception {
     public String what;
 
     public IDException() {
-        this.what = "";
+        this.what = "Некорректно указан ИНН";
     }
-
-
 }

@@ -16,13 +16,12 @@ public class Main {
         EmployeeSalaried employeeSalaried = new EmployeeSalaried("New Salaried worker");
         System.out.println(employeeSalaried.toString());
 
-
         EmployeeTimed employeeTimed = null;
         try {
-            employeeTimed = new EmployeeTimed(1234567890L, "New Timed Employee", 100);
-//          employeeTimed = new EmployeeTimed(12345, "Timed Employee", 100);  // недостаточно цифр ИНН-кода
+            employeeTimed = new EmployeeTimed(1234567890L, "Иван Почасовщик", 100);
+            employeeTimed = new EmployeeTimed(12345, "Мария Почасовка", 100);  // недостаточно цифр ИНН-кода
         } catch (IDException e) {
-            e.printStackTrace();
+            System.out.println(e.what);
         }
         System.out.println(employeeTimed.toString());
 
@@ -31,35 +30,45 @@ public class Main {
 
 
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(new EmployeeSalaried("DEmployee1 fulltime", 12000));
-        employees.add(new EmployeeTimed(1234567891, "Employee2 parttime", 70));
-        employees.add(new EmployeeSalaried("ZEmployee3 fulltime", 20000));
-        employees.add(new EmployeeTimed(1234567891, "Employee4 parttime", 90));
-        employees.add(new EmployeeSalaried("Amployee5 fulltime", 5000));
-        employees.add(new EmployeeTimed(1234567891, "Employee6 parttime", 110));
+        employees.add(new EmployeeSalaried("Андрей Полноставочник", 12000));
+        employees.add(new EmployeeTimed(1234567891, "Борис Почасовщик", 70));
+        employees.add(new EmployeeSalaried("Зиновий Полноставочник", 20000));
+        employees.add(new EmployeeTimed(1234567891, "Надежда Почасовка", 90));
+        employees.add(new EmployeeSalaried("Николай Полноставочник", 5000));
+        employees.add(new EmployeeTimed(1234567891, "Яков Почасовщик", 110));
 
         System.out.println("\nEmployees: ");
-        for (Employee employee : employees) {
+        for (Employee employee : employees)
             System.out.println(employee);
-        }
 
         // Collections.sort(…)
-        List<Employee> list = employees;
-        Collections.sort(list, new Comparator<Employee>()
-        {
+        Collections.sort(employees, new Comparator<Employee>() {
             @Override
-            public int compare(Employee o1, Employee o2)
-            {
-                // return (o1.CalculateSalary() > o2.CalculateSalary() ? 1 : o1.CalculateSalary() < o2.CalculateSalary() ? -1 : 0 );
-                return (int) (o1.CalculateSalary() - o2.CalculateSalary());
+            public int compare(Employee employee1, Employee employee2) {
+                return employee1.getName().compareTo(employee2.getName());
             }
         });
-
-        System.out.println("\nSorted by name Employees: ");
-        for (Employee employee : list)
-        {
+        System.out.println("\nEmployees sorted by NAME ascending: ");
+        for (Employee employee : employees)
             System.out.println(employee);
-        }
+
+
+        List<Employee> list = employees;
+
+        Collections.sort(list, Employee.ByName);
+        System.out.println("\nEmployees sorted by NAME:");
+        for (Employee employee : employees)
+            System.out.println(employee);
+
+        Collections.sort(list, Employee.BySalary);
+        System.out.println("\nEmployees sorted by SALARY:");
+        for (Employee employee : employees)
+            System.out.println(employee);
+
+        Collections.sort(list, (employee1, employee2) -> (employee2.getName().compareTo(employee1.getName())));
+        System.out.println("\nEmployees sorted by NAME descending:");
+        for (Employee employee : employees)
+            System.out.println(employee);
     }
 
     public static void main(String[] args) throws IDException {
