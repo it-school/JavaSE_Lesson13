@@ -26,8 +26,8 @@ public class Main
 
 		EmployeeTimed employeeTimed = null;
 		try {
-			employeeTimed = new EmployeeTimed(1234567890L, "Иван Почасовщик", 100);
-			employeeTimed = new EmployeeTimed(12345, "Мария Почасовка", 100);  // недостаточно цифр ИНН-кода
+			employeeTimed = new EmployeeTimed(2975812345L, "Иван Почасовщик", 100, new GregorianCalendar(1981, 6, 24));
+			// employeeTimed = new EmployeeTimed(12345, "Мария Почасовка", 100);  // недостаточно цифр ИНН-кода
 		}
 		catch (IDException e) {
 			System.out.println(e.what);
@@ -37,14 +37,13 @@ public class Main
 		System.out.println("Salary for usual employee: " + employeeSalaried.CalculateSalary());
 		System.out.println("Salary for timed employee: " + employeeTimed.CalculateSalary());
 
-
 		ArrayList<Employee> employees = new ArrayList<>();
 		employees.add(new EmployeeSalaried("Андрей Полноставочник", 12000));
 		employees.add(new EmployeeSalaried("Зиновий Полноставочник", 20000));
-		employees.add(new EmployeeTimed(1234567891, "Надежда Почасовка", 90));
-		employees.add(new EmployeeTimed(1234567891, "Борис Почасовщик", 70));
+		employees.add(new EmployeeTimed(2975823456L, "Надежда Почасовка", 90, new GregorianCalendar(1981, 6, 24)));
+		employees.add(new EmployeeTimed(2975834567L, "Борис Почасовщик", 70, new GregorianCalendar(1981, 6, 24)));
 		employees.add(new EmployeeSalaried("Николай Полноставочник", 5000));
-		employees.add(new EmployeeTimed(1234567891, "Яков Почасовщик", 110));
+		employees.add(new EmployeeTimed(2975856789L, "Яков Почасовщик", 110, new GregorianCalendar(1981, 6, 24)));
 
 		System.out.println("\nEmployees: ");
 		for (Employee employee : employees) { System.out.println(employee); }
@@ -65,8 +64,12 @@ public class Main
 
 		List<Employee> list = employees;
 
-		Collections.sort(list, Employee.ByName);
-		System.out.println("\nEmployees sorted by NAME:");
+		Collections.sort(list, Employee.ByNameAscending);
+		System.out.println("\nEmployees sorted by NAME ascending:");
+		for (Employee employee : employees) { System.out.println(employee); }
+
+		Collections.sort(list, Employee.ByNameDescending);
+		System.out.println("\nEmployees sorted by NAME descending:");
 		for (Employee employee : employees) { System.out.println(employee); }
 
 		Collections.sort(list, Employee.BySalary);
