@@ -56,6 +56,6 @@ public class EmployeeTimed extends Employee implements IEmployee {
     @Override
     public double CalculateSalary()
     {
-        return TYPICALS_MONTH_DAYS * HOURS_PER_DAY * typicalSalary;
+        return AVG_DAYS_IN_MONTH * WORK_HOURS_PER_DAY * typicalSalary;
     }
 }
